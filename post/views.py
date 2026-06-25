@@ -1,4 +1,5 @@
-from django.http import HttpResponse
+from django.shortcuts import render
+from django.http import HttpResponse ,HttpResponseRedirect
 
 posts = [
     {
@@ -28,18 +29,9 @@ posts = [
     }
 ]
 
-def static_view(request):
-    html = ""
+def home(request):
 
-    for post in posts:
-        html += f"""
-        <div>
-            <a href="posts/{post['id']}">
-            <h1> {post["id"]}: {post['title']}</h1> </a>
-        </div>
-        """
-
-    return HttpResponse(html)
+    return render(request,'home.html')
 
 
 def dynamic_view(request, id):
@@ -54,3 +46,4 @@ def dynamic_view(request, id):
             return HttpResponse(html)
 
     return HttpResponse("<h1>Page not found</h1>", status=404)
+
