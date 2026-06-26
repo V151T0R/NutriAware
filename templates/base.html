@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}My Django Blog{% endblock %}</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <h2><a href="{% url 'home' %}" style="text-decoration: none; color: black;">My Django Blog</a></h2>
+        </nav>
+        <hr>
+    </header>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        <hr>
+        <p>&copy; 2026 My Django Blog</p>
+    </footer>
+</body>
+</html>
