@@ -1,33 +1,12 @@
 from django.shortcuts import render
 from django.http import HttpResponse, Http404
+import json
+import os
+current_dir = os.path.dirname(os.path.abspath(__file__))
+file_path = os.path.join(current_dir, 'data.txt')
 
-posts = [
-    {
-        "id": 1,
-        "title": "Introduction to Python",
-        "content": "Python is a versatile programming language used for web development, data science, automation, and more."
-    },
-    {
-        "id": 2,
-        "title": "Understanding Lists",
-        "content": "Lists are ordered collections in Python that can store multiple items."
-    },
-    {
-        "id": 3,
-        "title": "Working with Dictionaries",
-        "content": "Dictionaries store data as key-value pairs and provide fast lookups."
-    },
-    {
-        "id": 4,
-        "title": "Getting Started with Flask",
-        "content": "Flask is a lightweight Python web framework used to build web applications."
-    },
-    {
-        "id": 5,
-        "title": "REST API Basics",
-        "content": "A REST API allows communication between clients and servers using HTTP methods."
-    }
-]
+with open(file_path, 'r') as file:
+    posts = json.load(file)
 
 def home(request):
     # Pass the entire list of dictionaries to the template
