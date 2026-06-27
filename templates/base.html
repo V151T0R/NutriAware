@@ -4,11 +4,56 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}NutriAware{% endblock %}</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Main body styling for the charcoal dark theme */
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #e0e0e0; 
+            background-color: #2b2b2b; 
+            line-height: 1.7; 
+            margin: 0 auto; 
+            max-width: 800px; 
+            padding: 0 20px; 
+        }
+
+        /* Subtle divider lines */
+        hr {
+            border: 0;
+            height: 1px;
+            background-color: #4a4a4a;
+            margin: 20px 0;
+        }
+
+        /* Footer styling */
+        footer p {
+            text-align: center;
+            color: #aaaaaa; 
+            font-size: 0.9rem;
+        }
+
+        /* Updated link colors to Amber */
+        main a {
+            color: #ffb74d; /* Bright, readable amber/orange */
+            text-decoration: none; 
+            font-weight: 600; 
+        }
+
+        /* Brighter amber when the user hovers over a link */
+        main a:hover {
+            color: #87fd00; 
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
     <header>
         <nav>
-            <h2><a href="{% url 'home' %}" style="text-decoration: none; color: black;">My Django Blog</a></h2>
+         <h1><a href="{% url 'home' %}" style="text-decoration: none; color: #1eab3b; font-weight: bold;">NutriAware</a></h1>
         </nav>
         <hr>
     </header>
@@ -20,7 +65,7 @@
 
     <footer>
         <hr>
-        <p>&copy; 2026 NutriAware Blog</p>
+        <p>&copy; 2026 NutriAware </p>
     </footer>
 </body>
 </html>

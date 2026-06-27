@@ -3,15 +3,16 @@
 {% block title %}Home | NutriAware {% endblock %}
 
 {% block content %}
-    <h1>Latest Posts</h1>
+    <h1>Posts</h1>
 
     {% if posts %}
         {% for post in posts %}
             <article style="margin-bottom: 2rem;">
                 
                 <h2><a href="{% url 'dynamic_view' post.id %}">{{ post.title }}</a></h2>
-                
-                <p>{{ post.content|truncatewords:8 }}</p>
+                 <div style="margin-top: 1.5rem; text-align: justify; hyphens: auto;">
+                <p>{{ post.content|truncatewords:30 }}</p>
+                </div>
                 
                 <a href="{% url 'dynamic_view' post.id %}">Read more...</a>
             </article>

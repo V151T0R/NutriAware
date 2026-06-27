@@ -6,8 +6,8 @@
     <article>
         <h1>{{ post.title }}</h1>
         
-        <div style="margin-top: 1.5rem;">
-            <p>{{ post.content|linebreaks }}</p>
+        <div style="margin-top: 1.5rem; text-align: justify; hyphens: auto;">
+            {{ post.content|linebreaks }}
         </div>
     </article>
 
