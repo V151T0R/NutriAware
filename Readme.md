@@ -6,7 +6,6 @@ NutriAware is a modern, responsive web application built with Django. It serves 
 
 ![NutriAware Demo](demo/demo.gif)
 
-*If the GIF isn't loading, ensure you have a screen recording saved as `demo.gif` inside a folder named `demo` in the root directory.*
 
 ---
 
@@ -33,7 +32,7 @@ NutriAware is a modern, responsive web application built with Django. It serves 
 
 Follow these steps to get a copy of the project up and running on your local machine for development and testing.
 
-### 1. Clone the repository
+### Clone the repository
 ```bash
 git clone [https://github.com/yourusername/NutriAware.git](https://github.com/yourusername/NutriAware.git)
 cd NutriAware
