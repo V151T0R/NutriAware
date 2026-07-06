@@ -7,55 +7,175 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <script>
+        const savedTheme = localStorage.getItem('theme');
+        const systemPrefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+        
+        if (savedTheme === 'light' || (!savedTheme && systemPrefersLight)) {
+            document.documentElement.setAttribute('data-theme', 'light');
+        }
+    </script>
 
     <style>
-        /* Main body styling for the charcoal dark theme */
+        /* --- Theme Variables --- */
+        :root {
+            /* Default Dark Theme */
+            --bg-main: #121212;
+            --bg-secondary: #1e1e1e;
+            --text-main: #e0e0e0;
+            --text-muted: #cccccc;
+            --border-color: #333333;
+            --brand-color: #1eab3b;
+            --brand-hover: #178a2e;
+            --btn-text: #121212;
+            --footer-text: #777777;
+        }
+
+        [data-theme="light"] {
+            /* Light Theme Overrides */
+            --bg-main: #f9f9f9;
+            --bg-secondary: #ffffff;
+            --text-main: #2b2b2b;
+            --text-muted: #555555;
+            --border-color: #e2e8f0;
+            --btn-text: #ffffff;
+            --footer-text: #718096;
+        }
+
+        /* CSS Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: 'Poppins', sans-serif;
-            color: #e0e0e0; 
-            background-color: #2b2b2b; 
+            background-color: var(--bg-main); 
+            color: var(--text-main); 
             line-height: 1.7; 
-            margin: 0 auto; 
-            max-width: 800px; 
-            padding: 0 20px; 
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; 
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
-        /* Subtle divider lines */
-        hr {
-            border: 0;
-            height: 1px;
-            background-color: #4a4a4a;
-            margin: 20px 0;
+        /* --- Header & Navigation --- */
+        header {
+            background-color: var(--bg-secondary); 
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
         }
 
-        /* Footer styling */
-        footer p {
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--brand-color);
+            text-decoration: none;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--brand-color);
+        }
+
+        /* Special styling for the login button */
+        .nav-links .login-btn {
+            background-color: var(--brand-color);
+            color: var(--btn-text);
+            padding: 0.4rem 1.2rem;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: background-color 0.2s ease, transform 0.1s ease;
+        }
+
+        .nav-links .login-btn:hover {
+            background-color: var(--brand-hover);
+            color: #ffffff;
+            transform: translateY(-2px);
+        }
+
+        /* Theme Toggle Button */
+        .theme-btn {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            transition: transform 0.2s ease;
+        }
+
+        .theme-btn:hover {
+            transform: scale(1.1);
+        }
+
+        /* --- Main Content Area --- */
+        main {
+            flex-grow: 1; 
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: var(--bg-secondary);
+            border-top: 1px solid var(--border-color);
             text-align: center;
-            color: #aaaaaa; 
+            padding: 1.5rem;
+            margin-top: auto;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        footer p {
+            color: var(--footer-text); 
             font-size: 0.9rem;
-        }
-
-        /* Updated link colors to Amber */
-        main a {
-            color: #ffb74d; /* Bright, readable amber/orange */
-            text-decoration: none; 
-            font-weight: 600; 
-        }
-
-        /* Brighter amber when the user hovers over a link */
-        main a:hover {
-            color: #87fd00; 
-            text-decoration: underline;
         }
     </style>
 </head>
 <body>
+
     <header>
         <nav>
-         <h1><a href="{% url 'home' %}" style="text-decoration: none; color: #1eab3b; font-weight: bold;">NutriAware</a></h1>
+            <a href="{% url 'home' %}" class="logo">NutriAware</a>
+            
+            <ul class="nav-links">
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="#">Posts</a></li> 
+                <li><a href="{% url 'create_post' %}">Create Post</a></li>
+                <li><a href="#" class="login-btn">Log In</a></li>
+                <li><button id="theme-toggle" class="theme-btn" title="Toggle Dark/Light Mode">🌓</button></li>
+            </ul>
         </nav>
-        <hr>
     </header>
 
     <main>
@@ -64,8 +184,27 @@
     </main>
 
     <footer>
-        <hr>
-        <p>&copy; 2026 NutriAware </p>
+        <p>&copy; {% now "Y" %} NutriAware. All rights reserved.</p>
     </footer>
+
+    <script>
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        
+        themeToggleBtn.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            let targetTheme = 'light';
+
+            // If currently light, switch to dark. Otherwise, switch to light.
+            if (currentTheme === 'light') {
+                targetTheme = 'dark';
+                document.documentElement.removeAttribute('data-theme');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'light');
+            }
+            
+            // Save preference to localStorage so it persists across pages
+            localStorage.setItem('theme', targetTheme);
+        });
+    </script>
 </body>
 </html>
