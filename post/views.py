@@ -40,3 +40,23 @@ def delete_post(request, id):
         post_to_delete.delete()
         
     return redirect('home')
+
+
+
+def update_post(request, id):
+    # Get the specific post to edit
+    post = get_object_or_404(Post, id=id)
+    
+    if request.method == 'POST':
+        title = request.POST.get('title')
+        content = request.POST.get('content')
+        
+        # Ensure fields aren't empty, then update and save
+        if title and content:
+            post.title = title
+            post.content = content
+            post.save()
+            return redirect('home')
+            
+    # If it's a GET request, pass the post to the template to pre-fill the form
+    return render(request, 'post/update_post.html', {'post': post})

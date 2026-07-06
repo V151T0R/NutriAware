@@ -6,4 +6,5 @@ urlpatterns = [
     path('post_<int:id>/',views.dynamic_view,name="dynamic_view"),
     path('create/', views.create_post, name='create_post'),
     path('delete/<int:id>/', views.delete_post, name='delete_post'),
+    path('update/<int:id>/', views.update_post, name='update_post'),
 ]
