@@ -4,7 +4,7 @@ NutriAware is a modern, responsive web application built with Django. It serves 
 
 ## Demonstration
 
-![NutriAware Demo](demo/demo.mp4)
+![NutriAware Demo](demo/demo.gif)
 
 
 ---
