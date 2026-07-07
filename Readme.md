@@ -2,14 +2,14 @@
 
 NutriAware is a modern, responsive web application built with Django. It serves as a dedicated platform for publishing, reading, and managing articles focused on nutritional science, holistic health, and dietary wellness. 
 
-## 🚀 Demonstration
+## Demonstration
 
 ![NutriAware Demo](demo/demo.mp4)
 
 
 ---
 
-## ✨ Key Features
+##  Key Features
 
 * **Dynamic Theme Toggling:** Seamlessly switch between a sleek charcoal Dark Mode and a clean Light Mode. User preferences are saved locally so the theme persists across sessions.
 * **Responsive CSS Grid:** Articles are displayed in a modern card-based grid layout that automatically adapts to desktop, tablet, and mobile screens.
